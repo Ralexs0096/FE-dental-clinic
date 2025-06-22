@@ -1,6 +1,7 @@
+import AuthLayout from '@/layouts/AuthLayout.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginPage from '@/pages/LoginPage.vue'
-import AuthLayout from '@/layouts/AuthLayout.vue'
+import ForgotPasswordPage from '@/pages/ForgotPasswordPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,12 @@ const router = createRouter({
           path: 'login',
           components: {
             default: LoginPage,
+          },
+        },
+        {
+          path: 'forgot-password',
+          components: {
+            default: ForgotPasswordPage,
           },
         },
       ],
