@@ -1,8 +1,8 @@
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import LoginPage from '@/pages/LoginPage.vue'
-import ForgotPasswordPage from '@/pages/ForgotPasswordPage.vue'
+import LoginPage from '@/pages/auth/LoginPage.vue'
+import ForgotPasswordPage from '@/pages/auth/ForgotPasswordPage.vue'
 import HomePage from '@/pages/HomePage.vue'
 import { useAuthStore } from '@/stores/auth'
 
