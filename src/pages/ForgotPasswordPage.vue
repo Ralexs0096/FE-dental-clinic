@@ -26,7 +26,7 @@
       <div class="text-center text-sm">
         Remember your password?
         <RouterLink
-          to="/login"
+          to="/auth/login"
           class="underline underline-offset-4 text-blue-600 hover:text-blue-700"
         >
           Back to login

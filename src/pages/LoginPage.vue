@@ -37,7 +37,7 @@ const handleLogin = () => {}
             >Password</label
           >
           <RouterLink
-            to="/forgot-password"
+            to="/auth/forgot-password"
             class="ml-auto text-sm underline-offset-4 hover:underline text-primary-600"
           >
             Forgot your password?
