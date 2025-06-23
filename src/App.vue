@@ -17,7 +17,7 @@ onMounted(async () => {
     }
 
     authStore.logout()
-    router.replace('/login')
+    router.replace('/auth/login')
   }
 })
 </script>
