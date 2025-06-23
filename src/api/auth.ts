@@ -30,3 +30,28 @@ export const login = async ({ email, password }: LoginRequest) => {
     }
   }
 }
+
+interface IsAuthResponse {
+  auth: boolean
+  message: string
+  user: User | null
+}
+
+export const isAuth = async () => {
+  try {
+    /**
+     * the token is taken from the store if this one already exist.
+     * the axios interceptor is adding it in the header for us. :)
+     */
+    const resp = await API.get<IsAuthResponse>(URLS.auth.isAuthenticated)
+
+    return resp.data
+  } catch (error) {
+    console.error(error)
+    return {
+      auth: false,
+      message: 'Something went wrong',
+      user: null,
+    }
+  }
+}
