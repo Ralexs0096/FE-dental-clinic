@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { login } from '@/api/auth'
 import { useAuthStore } from '@/stores/auth'
+
 const authStore = useAuthStore()
+const router = useRouter()
 
 const username = ref('')
 const password = ref('')
@@ -13,6 +16,8 @@ const handleLogin = async () => {
   if (response.auth && response.user) {
     authStore.setToken(response.token)
     authStore.setUser(response.user)
+
+    router.replace('/')
   }
 }
 </script>
