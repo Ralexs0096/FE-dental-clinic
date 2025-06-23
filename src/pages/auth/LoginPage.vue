@@ -1,10 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { login } from '@/api/auth'
+import { useAuthStore } from '@/stores/auth'
+const authStore = useAuthStore()
 
 const username = ref('')
 const password = ref('')
 
-const handleLogin = () => {}
+const handleLogin = async () => {
+  const response = await login({ email: username.value, password: password.value })
+
+  if (response.auth && response.user) {
+    authStore.setToken(response.token)
+    authStore.setUser(response.user)
+  }
+}
 </script>
 
 <template>
