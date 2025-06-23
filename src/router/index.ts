@@ -1,10 +1,14 @@
+import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
+
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+
 import LoginPage from '@/pages/auth/LoginPage.vue'
 import ForgotPasswordPage from '@/pages/auth/ForgotPasswordPage.vue'
-import HomePage from '@/pages/HomePage.vue'
-import { useAuthStore } from '@/stores/auth'
+
+import AppointmentsPage from '@/pages/AppointmentsPage.vue'
+import UsersPage from '@/pages/UsersPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,8 +40,17 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: 'home',
-          component: HomePage,
+          redirect: '/appointments',
+        },
+        {
+          path: 'appointments',
+          name: 'appointments',
+          component: AppointmentsPage,
+        },
+        {
+          path: 'users',
+          name: 'users',
+          component: UsersPage,
         },
       ],
     },
