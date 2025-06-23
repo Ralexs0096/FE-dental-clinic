@@ -1,7 +1,13 @@
+import type { User } from '@/interfaces/User'
 import { defineStore } from 'pinia'
 
+interface AuthState {
+  token: string
+  user: User | null
+}
+
 export const useAuthStore = defineStore('auth', {
-  state: () => ({
+  state: (): AuthState => ({
     token: localStorage.getItem('token') || '',
     user: null,
   }),
@@ -10,6 +16,9 @@ export const useAuthStore = defineStore('auth', {
     setToken(token: string) {
       this.token = token
       localStorage.setItem('token', token)
+    },
+    setUser(user: User | null) {
+      this.user = user
     },
     clearToken() {
       this.token = ''
