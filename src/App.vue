@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { RouterView } from 'vue-router'
+import { RouterView, useRouter } from 'vue-router'
 import { useAuthStore } from './stores/auth'
 import { isAuth } from './api/auth'
 
 const authStore = useAuthStore()
+const router = useRouter()
 
 onMounted(async () => {
   if (authStore.token && !authStore.user) {
@@ -16,6 +17,7 @@ onMounted(async () => {
     }
 
     authStore.logout()
+    router.replace('/login')
   }
 })
 </script>
