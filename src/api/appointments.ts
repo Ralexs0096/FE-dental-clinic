@@ -3,13 +3,13 @@ import type { User } from '@/interfaces/User'
 import API from './index'
 import { URLS } from './urls'
 
-interface GetAllAppointmentsResponse extends Appointment {
+interface FetchAllAppointmentsResponse extends Appointment {
   user: User
 }
 
-export const getAllAppointments = async () => {
+export const fetchAllAppointments = async () => {
   try {
-    const { data } = await API.get<GetAllAppointmentsResponse>(URLS.appointments.getAll, {})
+    const { data } = await API.get<FetchAllAppointmentsResponse>(URLS.appointments.getAll, {})
     return data
   } catch (error) {
     console.log(error)
