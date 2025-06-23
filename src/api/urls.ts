@@ -5,4 +5,10 @@ export const URLS = {
     isAuthenticated: '/auth/isAuth',
     forgotPassword: '/auth/forgotPassword',
   },
+  appointments: {
+    getAll: '/appointment',
+    create: '/appointment',
+    update: '/appointment/:id',
+    delete: '/appointment/:id',
+  },
 }
