@@ -9,11 +9,11 @@
     </div>
     <div class="relative hidden bg-muted lg:block">
       <div class="absolute inset-0">
-        <!-- <img
-          src="@/assets/images/auth-bg.jpg"
+        <img
+          src="@/assets/images/dentora-login-screen.png"
           alt="Authentication Background"
           class="h-full w-full object-cover"
-        /> -->
+        />
       </div>
     </div>
   </div>
