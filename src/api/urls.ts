@@ -11,4 +11,8 @@ export const URLS = {
     update: '/appointment/:id',
     delete: '/appointment/:id',
   },
+  users: {
+    getAll: '/user',
+    create: '/user/create',
+  },
 }
