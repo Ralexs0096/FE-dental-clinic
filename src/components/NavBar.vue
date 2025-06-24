@@ -35,7 +35,7 @@ const logout = () => {
               </RouterLink>
             </li>
 
-            <li>
+            <li v-if="authStore.user?.role === 'admin'">
               <RouterLink
                 class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
                 to="/users"
