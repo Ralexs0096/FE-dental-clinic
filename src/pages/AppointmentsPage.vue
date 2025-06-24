@@ -2,74 +2,36 @@
 import { ref, onMounted } from 'vue'
 import type { Appointment } from '@/interfaces/Appointment'
 import { fetchAllAppointments } from '@/api/appointments'
-import { useVueTable, getCoreRowModel } from '@tanstack/vue-table'
+import AppointmentTable from '@/components/AppointmentsTable.vue'
 
 const appointments = ref<Appointment[]>([])
 
-const columns = [
-  {
-    accessorKey: 'title',
-    header: 'Title',
-  },
-  {
-    accessorKey: 'description',
-    header: 'Description',
-  },
-  {
-    accessorKey: 'startTime',
-    header: 'Start Time',
-  },
-  {
-    accessorKey: 'endTime',
-    header: 'End Time',
-  },
-]
-
-const table = useVueTable({
-  data: appointments,
-  columns,
-  getCoreRowModel: getCoreRowModel(),
-})
-
 onMounted(async () => {
-  const appointmentsResponse = await fetchAllAppointments()
+  const response = await fetchAllAppointments()
 
-  if (appointmentsResponse?.ok) {
-    appointments.value = appointmentsResponse.appointments
+  if (response?.ok) {
+    appointments.value = response.appointments.map((appointment) => ({
+      ...appointment,
+      startTime: new Date(appointment.startTime).toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      }),
+      endTime: new Date(appointment.endTime).toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      }),
+      title: appointment.title.trim(),
+    }))
   }
 })
 </script>
 
 <template>
-  <h1 class="text-xl font-bold mb-4">Appointments</h1>
+  <main class="p-5">
+    <h1 class="text-xl font-bold mb-4">Appointments</h1>
 
-  <div class="p-5">
-    <table class="table-auto border-collapse border border-gray-400 w-full">
-      <thead>
-        <tr v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
-          <th
-            v-for="header in headerGroup.headers"
-            :key="header.id"
-            class="border border-gray-300 px-4 py-2 bg-gray-100 text-left"
-          >
-            <span v-if="!header.isPlaceholder">
-              {{ header.column.columnDef.header }}
-            </span>
-          </th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr v-for="row in table.getRowModel().rows" :key="row.id">
-          <td
-            v-for="cell in row.getVisibleCells()"
-            :key="cell.id"
-            class="border border-gray-300 px-4 py-2"
-          >
-            {{ cell.getValue() }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="p-5">
+      <AppointmentTable :appointments="appointments" />
+    </div>
+  </main>
 </template>
