@@ -55,7 +55,7 @@ const router = createRouter({
       ],
     },
 
-    // Catch-all: redirect unknown routes to login or dashboard
+    // Catch-all
     {
       path: '/:pathMatch(.*)*',
       redirect: '/',

@@ -27,21 +27,21 @@ const logout = () => {
         <nav aria-label="Global" class="hidden md:block">
           <ul class="flex items-center gap-6 text-sm">
             <li>
-              <a
+              <RouterLink
                 class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                href="#"
+                to="/appointments"
               >
                 Appointments
-              </a>
+              </RouterLink>
             </li>
 
             <li>
-              <a
+              <RouterLink
                 class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                href="#"
+                to="/users"
               >
                 Users
-              </a>
+              </RouterLink>
             </li>
           </ul>
         </nav>
